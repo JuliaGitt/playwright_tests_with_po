@@ -1,6 +1,6 @@
-import { BaseSwagLabPage } from './BaseSwagLab.page';
+import { BasePage } from './Base.page';
 
-export class ShoppingCartPage extends BaseSwagLabPage {
+export class ShoppingCartPage extends BasePage {
     url = '/cart.html';
 
     cartItemSelector = '.cart_item';
