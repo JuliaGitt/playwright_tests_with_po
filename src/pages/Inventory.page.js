@@ -7,13 +7,13 @@ export class InventoryPage extends BasePage {
 
     inventoryItems = this.page.locator('.inventory_item');
 
-    addItemToCartButton = this.page.locator('[id^="add-to-cart"]');
+    addItemToCartButton = this.page.getByTestId('[id^="add-to-cart"]');
 
-    priceElements = this.page.locator('[data-test="inventory-item-price"]');
+    priceElements = this.page.getByTestId('inventory-item-price');
 
-    dropdown = this.page.locator('[data-test="product-sort-container"]');
+    nameElements = this.page.getByTestId('inventory-item-name');
 
-    sorting = this.page.locator('[data-test= "product-sort-container"]');
+    sorting = this.page.getByTestId('product-sort-container');
 
     async addItemToCartById(id) {
         await this.addItemToCartButton.nth(id).click();
@@ -23,11 +23,11 @@ export class InventoryPage extends BasePage {
         return this.priceElements.allTextContents();
     }
 
-    async dropdownMenu() {
-        await this.dropdown.click();
+    async getAllNames() {
+        return this.nameElements.allTextContents();
     }
 
-    async sortingItems() {
-        await this.sorting.selectOption('hilo');
+    async sortingItems(option) {
+        await this.sorting.selectOption(option);
     }
 }
